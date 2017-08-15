@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -52,20 +53,28 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // Get the {@link Word} object located at this position in the list
         Word currentWord = getItem(position);
 
-        // Find the TextView in the list_item.xml layout with the ID miwok_text_view.
+        // Procura o TextView no arquivo list_item.xml layout com a identificaçã
+        // ID miwok_text_view.
         TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwok_text_view);
-        // Get the Miwok translation from the currentWord object and set this text on
-        // the Miwok TextView.
+        // Pega a Miwok translation do currentWord object e coloca o texto no Miwok TextView
         miwokTextView.setText(currentWord.getMiwokTranslation());
 
-        // Find the TextView in the list_item.xml layout with the ID default_text_view.
+        // Procura o TextView no arquivo list_item.xml layout com a identificação
+        // ID default_text_view.
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
-        // Get the default translation from the currentWord object and set this text on
-        // the default TextView.
+        // Pega a Tradução em Inglês (default translation) do currentWord object e coloca no local
+        // da tradução em inglês (default translation).
         defaultTextView.setText(currentWord.getDefaultTranslation());
 
-        // Return the whole list item layout (containing 2 TextViews) so that it can be shown in
-        // the ListView.
+        // Procura a ImageView no arquivo list_item.xml layout com a identificação
+        // ID image.
+        ImageView imageView = (ImageView) listItemView.findViewById(R.id.image);
+        // Pega a imagem (image resource ID) do arquivo currentWord object coloca no local definido
+        //para imagem
+        imageView.setImageResource(currentWord.getImageResourceId());
+
+        // Return the whole list item layout (containing 2 TextViews and one ImageView)
+        // so that it can be shown in the ListView.
         return listItemView;
     }
 }

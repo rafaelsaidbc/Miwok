@@ -16,6 +16,7 @@
 package com.example.android.miwok;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,14 +32,18 @@ import java.util.ArrayList;
  */
 public class WordAdapter extends ArrayAdapter<Word> {
 
+    //Resource ID para mudar o fundo da lista de palavras
+    private int mColorResourceId;
+
     /**
      * Create a new {@link WordAdapter} object.
      *
      * @param context is the current context (i.e. Activity) that the adapter is being created in.
      * @param words   is the list of {@link Word}s to be displayed.
      */
-    public WordAdapter(Context context, ArrayList<Word> words) {
+    public WordAdapter(Context context, ArrayList<Word> words, int colorResouceId) {
         super(context, 0, words);
+        mColorResourceId = colorResouceId;
     }
 
     @Override
@@ -81,6 +86,15 @@ public class WordAdapter extends ArrayAdapter<Word> {
             //GONE esconde completamente o local onde deveria ter imagem
             imageView.setVisibility(View.GONE);
         }
+
+        //define o tema de cor para a list_item
+        View textContainer = listItemView.findViewById(R.id.text_container);
+
+        //procura a cor que o resource ID mapeia
+        int color = ContextCompat.getColor(getContext(), mColorResourceId);
+
+        //retorna toda a item_list (2 TextViews) então mostra a cor de fundo da ListView
+        textContainer.setBackgroundColor(color);
 
 
         // Return the whole list item layout (containing 2 TextViews and one ImageView)

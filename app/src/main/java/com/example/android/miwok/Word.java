@@ -11,14 +11,13 @@ package com.example.android.miwok;
 
 public class Word {
 
+    private static final int NO_IMAGE_PROVIDED = -1;
     //Default (inglês) translation
     private String mDefaultTranslation;
-
     //Miwok (idioma a ser aprendido) translation
     private String mMiwokTranslation;
-
     //adiciona imagem à lista
-    private int mImageResouceId;
+    private int mImageResouceId = NO_IMAGE_PROVIDED;
 
     public Word(String defaultTranslation, String miwokTranslation) {
         mDefaultTranslation = defaultTranslation;
@@ -50,5 +49,11 @@ public class Word {
 
     public int getImageResourceId() {
         return mImageResouceId;
+    }
+
+    //retorna true se tiver imagem (colors, family and numbers) e false de não tiver imagem (phrase)
+    public boolean hasImage() {
+        //se a variável for não igual (!=) a -1 haverá imagem a ser obtida, método retorna true
+        return mImageResouceId != NO_IMAGE_PROVIDED;
     }
 }

@@ -17,10 +17,26 @@ public class Word {
     //Miwok (idioma a ser aprendido) translation
     private String mMiwokTranslation;
 
+    //adiciona imagem à lista
+    private int mImageResouceId;
+
     public Word(String defaultTranslation, String miwokTranslation) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
     }
+
+    /*
+    *Cria um novo Word object
+    *@param defaultTranslation palavra em inglês
+     * *@param miwokTranslation palavra em Miwok
+      * @param imageResourId imagem que faz referência à palavra
+     */
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId) {
+        mDefaultTranslation = defaultTranslation;
+        mMiwokTranslation = miwokTranslation;
+        mImageResouceId = imageResourceId;
+    }
+
 
     //get the default translation word.
     public String getDefaultTranslation() {
@@ -30,5 +46,9 @@ public class Word {
     //get the Miwok translation word.
     public String getMiwokTranslation() {
         return mMiwokTranslation;
+    }
+
+    public int getImageResourceId() {
+        return mImageResouceId;
     }
 }

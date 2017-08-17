@@ -18,10 +18,13 @@ public class Word {
     private String mMiwokTranslation;
     //adiciona imagem à lista
     private int mImageResouceId = NO_IMAGE_PROVIDED;
+    //audio resource id for the word
+    private int mAudioResourceId;
 
-    public Word(String defaultTranslation, String miwokTranslation) {
+    public Word(String defaultTranslation, String miwokTranslation, int audioResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
+        mAudioResourceId = audioResourceId;
     }
 
     /*
@@ -30,10 +33,11 @@ public class Word {
      * *@param miwokTranslation palavra em Miwok
       * @param imageResourId imagem que faz referência à palavra
      */
-    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId) {
+    public Word(String defaultTranslation, String miwokTranslation, int imageResourceId, int audioResourceId) {
         mDefaultTranslation = defaultTranslation;
         mMiwokTranslation = miwokTranslation;
         mImageResouceId = imageResourceId;
+        mAudioResourceId = audioResourceId;
     }
 
 
@@ -55,5 +59,10 @@ public class Word {
     public boolean hasImage() {
         //se a variável for não igual (!=) a -1 haverá imagem a ser obtida, método retorna true
         return mImageResouceId != NO_IMAGE_PROVIDED;
+    }
+
+    //retorna o audio resource Id of this class
+    public int getAudioResourceId() {
+        return mAudioResourceId;
     }
 }
